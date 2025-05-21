@@ -1,32 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>CV de {{ $user->name }}</title>
+    <meta charset="UTF-8">
+    <title>CV - {{ $user->name }}</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        h1 { color: #333; }
-        h2 { color: #555; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin: 5px 0; }
+        body {
+            font-family: DejaVu Sans, sans-serif;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .header {
+            background-color: #1e40af;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .section-title {
+            font-weight: bold;
+            font-size: 16px;
+            color: #1e3a8a;
+            margin-top: 20px;
+            border-bottom: 1px solid #cbd5e1;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #d1fae5;
+            color: #065f46;
+            border-radius: 12px;
+            padding: 4px 10px;
+            font-size: 11px;
+            margin: 3px;
+        }
+        .project {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>{{ $user->name }}</h1>
-    <h2>{{ $user->title }}</h2>
-    <p>{{ $user->bio }}</p>
 
-    <h3>Projets</h3>
-    <ul>
-        @foreach ($user->projects as $project)
-            <li><strong>{{ $project->title }}</strong>: {{ $project->description }}</li>
-        @endforeach
-    </ul>
+    {{-- Header --}}
+    <div class="header">
+        <h1>{{ $user->name }}</h1>
+        <p>{{ $user->title }}</p>
+    </div>
 
-    <h3>Compétences</h3>
-    <ul>
-        @foreach ($user->skills as $skill)
-            <li>{{ $skill->name }}</li>
-        @endforeach
-    </ul>
+    {{-- Bio --}}
+    <div>
+        <h2 class="section-title">Profil</h2>
+        <p>{{ $user->bio }}</p>
+    </div>
+
+    {{-- Compétences --}}
+    <div>
+        <h2 class="section-title">Compétences</h2>
+        @if($user->skills->count())
+            @foreach ($user->skills as $skill)
+                <span class="badge">{{ $skill->name }}</span>
+            @endforeach
+        @else
+            <p>Aucune compétence renseignée.</p>
+        @endif
+    </div>
+
+    {{-- Projets --}}
+    <div>
+        <h2 class="section-title">Projets</h2>
+        @if($user->projects->count())
+            @foreach ($user->projects as $project)
+                <div class="project">
+                    <strong>{{ $project->title }}</strong><br>
+                    <span>{{ $project->description }}</span>
+                </div>
+            @endforeach
+        @else
+            <p>Aucun projet disponible.</p>
+        @endif
+    </div>
+
 </body>
 </html>
