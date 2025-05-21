@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-2xl font-bold text-gray-800">
-            🛠️ Mes Compétences
+             Mes Compétences
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
         <div class="flex justify-end mb-6">
             <a href="{{ route('skills.create') }}"
                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow">
-               ➕ Ajouter une compétence
+               Ajouter une compétence
             </a>
         </div>
 
@@ -31,13 +31,13 @@
                     </span>
                     <div class="flex items-center gap-3 text-sm">
                         <a href="{{ route('skills.edit', $skill) }}" class="text-indigo-600 hover:underline">
-                            ✏️ Modifier
+                             Modifier
                         </a>
                         <form action="{{ route('skills.destroy', $skill) }}" method="POST" onsubmit="return confirm('Supprimer cette compétence ?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-600 hover:underline">
-                                🗑️ Supprimer
+                                Supprimer
                             </button>
                         </form>
                     </div>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-2xl font-bold text-gray-800">
-            👤 Profil public de {{ $user->name }}
+             Profil public de {{ $user->name }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
 <div class="text-right">
                 <a href="{{ route('pdf.generate', $user->username) }}"
                    class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-black font-semibold px-5 py-2.5 rounded-lg shadow-md transition">
-                    📄 Télécharger le CV (PDF)
+                    <h2> Télécharger le CV (PDF)</h2>
                 </a>
             </div>
             {{-- Carte profil --}}
@@ -22,7 +22,7 @@
 
             {{-- Projets --}}
             <div class="mb-8">
-                <h4 class="text-lg font-bold text-blue-800 mb-4">📁 Projets</h4>
+                <h4 class="text-lg font-bold text-blue-800 mb-4"> Projets</h4>
                 @if ($user->projects->count())
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach ($user->projects as $project)
@@ -39,7 +39,7 @@
 
             {{-- Compétences --}}
             <div class="mb-8">
-                <h4 class="text-lg font-bold text-green-800 mb-4">🧠 Compétences</h4>
+                <h4 class="text-lg font-bold text-green-800 mb-4">Compétences</h4>
                 @if ($user->skills->count())
                     <div class="flex flex-wrap gap-2">
                         @foreach ($user->skills as $skill)

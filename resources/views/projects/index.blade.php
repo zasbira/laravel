@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-2xl font-bold text-gray-800">
-            📁 Mes Projets
+          Mes Projets
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
         <div class="flex justify-end mb-6">
             <a href="{{ route('projects.create') }}"
                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow">
-               ➕ Ajouter un projet
+               Ajouter un projet
             </a>
         </div>
 
@@ -32,16 +32,16 @@
                     @if ($project->link)
                         <a href="{{ $project->link }}" target="_blank"
                            class="inline-block mt-2 text-blue-500 hover:underline">
-                            🔗 Voir le lien
+                             Voir le lien
                         </a>
                     @endif
 
                     <div class="mt-4 flex justify-between text-sm text-gray-500">
-                        <a href="{{ route('projects.edit', $project) }}" class="text-indigo-600 hover:underline">✏️ Modifier</a>
+                        <a href="{{ route('projects.edit', $project) }}" class="text-indigo-600 hover:underline"> Modifier</a>
                         <form action="{{ route('projects.destroy', $project) }}" method="POST" onsubmit="return confirm('Supprimer ce projet ?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:underline">🗑️ Supprimer</button>
+                            <button type="submit" class="text-red-600 hover:underline">Supprimer</button>
                         </form>
                     </div>
                 </div>

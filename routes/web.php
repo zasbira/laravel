@@ -7,13 +7,12 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-
-
-
+// Public profile route
 Route::get('/profile/{username}', [PublicProfileController::class, 'show'])->name('profile.show');
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -23,10 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-   
     Route::get('/pdf/{username}', [PDFController::class, 'generate'])->name('pdf.generate');
-    Route::get('/profile/{username}', [PublicProfileController::class, 'show'])->name('profile.show');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->middleware('auth')
+        ->name('logout');
+
     
 });
 

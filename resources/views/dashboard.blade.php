@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="text-2xl font-bold text-gray-900">
-                👋 Bienvenue, {{ Auth::user()->name }}
+                 Bienvenue, {{ Auth::user()->name }}
             </h2>
             
         </div>
@@ -45,7 +45,11 @@
             </a>
 
             {{-- Profil public --}}
+            @if(Auth::user()->username)
             <a href="{{ route('profile.show', Auth::user()->username) }}" class="group bg-purple-100 hover:bg-purple-200 text-purple-900 rounded-2xl p-6 shadow-md transition">
+            @else
+            <a href="{{ route('profile.edit') }}" class="group bg-purple-100 hover:bg-purple-200 text-purple-900 rounded-2xl p-6 shadow-md transition" title="Veuillez d'abord définir votre nom d'utilisateur dans votre profil">
+            @endif
                 <div class="flex items-center justify-between mb-2">
                     <div class="text-lg font-semibold">Profil Public</div>
                     <svg class="w-6 h-6 text-purple-700 group-hover:scale-110 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
